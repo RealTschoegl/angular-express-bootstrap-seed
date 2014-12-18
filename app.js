@@ -1,57 +1,37 @@
-
-/**
- * Module dependencies
- */
-
 var express = require('express'),
-  routes = require('./routes'),
+	app = express(),
   api = require('./routes/api'),
-  http = require('http'),
-  path = require('path');
+	router = express.Router();
 
+app.use(router);
 
-var app = module.exports = express();
+// ***** Static web pages are served up here
+router.use('/public', express.static(__dirname + '/public'));
+router.use('/bower_components', express.static(__dirname + '/bower_components'));
+router.use('/node_modules', express.static(__dirname + '/node_modules'));
+router.use('/static', express.static(__dirname + '/static'));
 
-/**
-* Configuration
-*/
-
-// all environments
-app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(app.router);
 
-// development only
-if (app.get('env') === 'development') {
-   app.use(express.errorHandler());
-};
-
-// production only
-if (app.get('env') === 'production') {
-  // TODO
-}; 
-
-
-
-// Routes
-app.get('/', routes.index);
-app.get('/partial/:name', routes.partial);
-
-// JSON API
-app.get('/api/name', api.name);
-
-// redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
-
-/**
-* Start Server
-*/
-
-http.createServer(app).listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+// ***** Default routing
+router.get('/', function(req, res){
+  res.render('layout');
 });
+
+// ***** Routing for serving partials
+router.get('/partial/:name', function (req, res) {
+	var name = req.params.name;
+	res.render('partials/' + name);
+});
+
+// ***** For all other routes
+router.get('*', function(req, res){
+  res.render('layout');
+});
+
+// ***** Port Assignment
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'));
+console.log('Listening on port ' + app.get('port') + '...');
+

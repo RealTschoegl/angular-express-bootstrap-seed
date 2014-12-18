@@ -1,0 +1,5 @@
+# Prevent uploading of bower_components to git
+bower_components
+
+# Prevent uploading of node_modules to git
+node_modules
