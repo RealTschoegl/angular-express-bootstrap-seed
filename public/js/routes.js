@@ -9,7 +9,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function($
 		$locationProvider.html5Mode(true);
 }]);
 
-myApp.run(['$rootScope', '$location', 'Login', function($rootScope, $location) {
+myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 	$rootScope.$on('$routeChangeStart', function(event, to) {
 		
 	})

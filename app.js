@@ -1,7 +1,7 @@
 var express = require('express'),
 	app = express(),
-  api = require('./routes/api'),
-	router = express.Router();
+	router = express.Router(),
+	api = require('./routes/api-routes');
 
 app.use(router);
 
@@ -13,6 +13,8 @@ router.use('/static', express.static(__dirname + '/static'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
+router.use('/api', api);
 
 // ***** Default routing
 router.get('/', function(req, res){

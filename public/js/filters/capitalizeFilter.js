@@ -1,5 +1,5 @@
 myApp.filter('capitalize', function() {
     return function(input) {
-        return input.substring(0,1).toUpperCase()+input.substring(1);
+        return input.replace(/\b./g, function(m){ return m.toUpperCase(); });
     }
 });

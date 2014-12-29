@@ -12,34 +12,68 @@ Runs like a typical express app:
     
     app.js              --> app config
     package.json        --> for npm
+    bower.json          --> for bower
+    gulpfile.js         --> manage gulp config
+    README.md           --> this
+    api/
+      sample.js         --> sample API 
+    bower_components/
+      angular/
+      angular-route/
+      bootstrap/
+      font-awesome/
+      jquery/
+    node_modules/
+      express/
+      gulp/
+      gulp-autoprefixer/
+      gulp-minify-css/
+      gulp-notify/
+      gulp-rename/
+      gulp-ruby-sass/
+      gulp-util/
+      jade/
+      underscore/
     public/             --> all of the files to be used in on the client side
-      bootstrap/        --> all bootstrap files
-        css/
-        img/
-        js/
       css/              --> css files
-        app.css         --> default stylesheet
-      img/              --> image files
+        app.css         --> 
+        app.min.css     --> in use
+        navbar.css      -->
+        navbar.min.css  --> in use
+      images/              --> image files
       js/               --> javascript files
-        app.js          --> declare top-level app module
-        controllers.js  --> application controllers
-        directives.js   --> custom angular directives
-        filters.js      --> custom angular filters
-        services.js     --> custom angular services
-        lib/            --> angular and 3rd party JavaScript libraries
-          angular/
-            angular.js            --> the latest angular js
-            angular.min.js        --> the latest minified angular js
-            angular-*.js          --> angular add-on modules
-            version.txt           --> version number
+        controllers/
+          IndexCtrl.js          --> index controller
+          NavCtrl.js            --> navbar controller
+        directives/
+          navbar.js             --> directive for navbar
+        filters/
+          capitalizeFilter.js   --> capitalize first letter of each word in string
+        library/
+        services/
+          sampleService.js      --> a sample angular service
+        values/
+          month.js              --> sample angular value
+        vendor/
+        app.js                  --> angular module loading
+        routes.js               --> angular routing
+      sass/
+        app.scss                --> application sass stylesheet
+        navbar.scss             --> navbar sass stylesheet
     routes/
-      api.js            --> route for serving JSON
-      index.js          --> route for serving HTML pages and partials
+      api-routes.js     --> API routes
+    static/
+      403.html          --> 403 page
+      404.html          --> 404 page
+      500.html          --> 500 page
     views/
-      index.jade        --> main page for app
-      layout.jade       --> doctype, title, head boilerplate
+      includes/
+        footer.jade     --> footer template
+        header.jade     --> includes css tags
+        scripts.jade    --> include scripts tags
       partials/         --> angular view partials (partial jade templates)
-        partial1.jade
-        partial2.jade
-
+        index.jade        --> landing page for app
+        navbar.jade       --> navigation template
+      layout.jade       --> page layout 
+       
 
